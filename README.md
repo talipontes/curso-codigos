@@ -1,1 +1,1 @@
-Exercícios e material utilizado/desenvolvido durante o curso de Python da How Bootcamps e da Stone.
+Exercícios e material utilizado/desenvolvido durante o curso de Python promovido pela How Bootcamps em parceria com a Stone. 💚
