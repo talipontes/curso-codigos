@@ -6,6 +6,7 @@ Imprima na tela o elemento e sua respectiva posição na lista. Exemplo: para a 
 >>> Elemento 6 na posição 2 
 >>> Elemento “H” na posição 3""" 
 
+
 metais = ['Rutênio', 'Cobre', 'Vanádio', 'Cobalto', 'Zinco']
 
 print (f'Elemento {metais [0]} na posição 0' )
@@ -13,6 +14,13 @@ print (f'Elemento {metais [1]} na posição 1' )
 print (f'Elemento {metais [2]} na posição 2' )
 print (f'Elemento {metais [3]} na posição 3' )
 print (f'Elemento {metais [4]} na posição 4' )
+
+# OUTRA FORMA:
+
+for posicao, elemento in enumerate(metais):                       
+    print(f"Elemento {elemento} na posição {posicao}")            # enumerate (): função que add um contador a um iterável para cada elemento em cursor, uma tupla é produzida com (counter, element)
+
+
 
 """Exercício 2: 
 Crie uma lista com 10 elementos (você escolhe quais serão) e imprima a lista na ordem inversa. 
@@ -51,12 +59,33 @@ média anual, e em que mês elas ocorreram (mostrar o mês por extenso: Exemplo 
 >>> 3 – março 
 >>> 6 – junho """
 
-temperaturas = [ float(input('Digite a temperatura média do mês ' + str(mes)) ) for mes in range (1,12+1)]
+meses = ( "janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro")
 
-print (temperaturas)
+temperaturas = []
 
-print ('A maior temperatura foi',max(temperaturas), '°C e aconteceu no mês',temperaturas.index(max(temperaturas))+1)
-print ('A menor temperatura foi',min(temperaturas), '°C e aconteceu no mês',temperaturas.index(min(temperaturas))+1)
+# Laço de repetição para ler as temperaturas dos meses
+for mes in meses:
+
+    # Lê a temperatura de cada mês
+    temperatura = float(input(f"Digite a temperatura (°C) do mês de {mes}: "))
+
+    # Adiciona na lista
+    temperaturas.append(temperatura)
+
+# Calcula a média anual das temperaturas, arredondando para 2 casas decimais
+media_temp_anual = round(sum(temperaturas) / len(temperaturas), 2)
+
+print(f"Meses com a temperatura acima da média anual de {media_temp_anual}°C:")
+
+# Laço de repetição para percorrer todas as temperaturas e suas posições na lista
+for indice, temp in enumerate(temperaturas):
+
+    # Checagem se a temperatura é maior do que a média anual
+    if temp > media_temp_anual:
+
+        # Os índices começam por 0!
+        # Para fazer com que os índices correspondam ao número dos meses, soma-se 1 ao índice
+        print(f"{indice+1} - {meses[indice]}")
 
 
 """Exercício 5: 
@@ -66,8 +95,9 @@ o elemento 6000 na lista acima. O resultado final deverá ser:
 
 lst = [10, 20, [300, 400, [5000, 6000], 500], 30, 40]
 
-lst.insert (2,7000)
-print (lst)
+lst[2][2].append(7000)
+
+print(lst)
 
 """Exercício 6: 
 Faça um programa que remova strings vazias de uma lista de strings. 
@@ -97,8 +127,9 @@ print (lst)
 Dada a lista de strings [“1”, “7”, “99”, “15”] construa um programa que converte todos os elementos desta lista para inteiro. 
 Faça também o inverso, dada a mesma lista só que agora de elementos inteiros, converta todos os elementos para int. """ 
 
-strings = ['1', '7', '99', '15']
+lista_string = ["1", "7", "99", "15"]
 
-intlist = [int(i) for i in strings]
-print (intlist)
+lista_string_convertida_1 = list(map(int, lista_string))
+
+print(f"Lista de strings convertidas para inteiros - solução número 1: {lista_string_convertida_1}")
 
